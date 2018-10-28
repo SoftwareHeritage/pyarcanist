@@ -25,9 +25,11 @@ setup(
     author_email='david.douard@sdfa3.org',
     url='https://framagit.org/douardda/pyarcanist',
     install_requires=[
+        'beaker',
         'click',
+        'gitpython',
         'phabricator',
-        'gitpython'],
+    ],
     package_dir={"": "src"},
     packages=find_packages('src'),
     entry_points={

@@ -1,4 +1,6 @@
 import os
+from . import cli
+
 
 ROWS, COLUMNS = map(int, os.popen('stty size', 'r').read().split())
 
@@ -9,5 +11,5 @@ def wrap(msg, width=COLUMNS):
     return msg
 
 
-def object_from_phid(cnx, phid):
-    return cnx.phid.query(phids=[phid])[phid]
+def object_from_phid(phid):
+    return cli.cnx.phid.query(phids=[phid])[phid]

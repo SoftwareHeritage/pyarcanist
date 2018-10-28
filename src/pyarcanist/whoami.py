@@ -1,16 +1,20 @@
 import click
-from .cli import pyarc
+from . import cache
+from . import cli
 
 
-def get_user(cnx):
-    return cnx.user.whoami()
+@cache.cache()
+def get_user(phid=None):
+    if phid is None:
+        return dict(cli.cnx.user.whoami())
+    return cli.cnx.phid.query(phids=[phid])[phid]
 
 
-@pyarc.command()
+@cli.pyarc.command()
 @click.pass_context
 def whoami(ctx):
     '''Gives informations on the current user'''
-    user = get_user(ctx.obj['cnx'])
+    user = get_user()
     click.echo("{userName} ({realName})".format(**user))
     options = ctx.obj['options']
     if options.verbose:
