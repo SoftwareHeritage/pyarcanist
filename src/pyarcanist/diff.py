@@ -1,6 +1,10 @@
 from itertools import chain
+from datetime import datetime
+
+import humanize
 import click
 import git
+
 from . import cli
 from .whoami import get_user
 from .tools import wrap, object_from_phid
@@ -28,6 +32,9 @@ def format_diff(kw):
     kw['fields']['status']['name'] = click.style(
         kw['fields']['status']['name'],
         fg=kw['fields']['status']['color.ansi'])
+    for k in kw['fields']:
+        if k.startswith('date'):
+            kw['fields'][k] = datetime.fromtimestamp(kw['fields'][k])
     return kw
 
 
@@ -82,6 +89,14 @@ def diff(ctx, mine, all_repos, summary):
             click.echo('{key}: {value}'.format(
                 key=click.style('Author', fg='yellow'),
                 value=author['name']))
+            n = datetime.now()
+            click.echo('{key}: {value} ago'.format(
+                key=click.style('Created', fg='yellow'),
+                value=humanize.naturaldelta(n - fields['dateCreated'])))
+            click.echo('{key}: {value} ago'.format(
+                key=click.style('Modified', fg='yellow'),
+                value=humanize.naturaldelta(n - fields['dateModified'])))
+
             click.secho('Summary:', fg='yellow')
             click.secho('  ' + fields['title'], bold=True)
             click.echo()

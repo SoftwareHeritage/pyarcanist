@@ -28,6 +28,7 @@ setup(
         'beaker',
         'click',
         'gitpython',
+        'humanize',
         'phabricator',
     ],
     package_dir={"": "src"},
