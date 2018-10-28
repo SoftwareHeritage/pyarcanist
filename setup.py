@@ -14,12 +14,16 @@ sys.path.insert(0, src_dir)
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+
 setup(
-    name='pyarc',
+    name='pyarcanist',
     version='0.0.1',
-    description='',
+    description='Pure python cli for Phabricator',
     long_description=long_description,
     long_description_content_type='text/markdown',
+    author='David Douard',
+    author_email='david.douard@sdfa3.org',
+    url='https://framagit.org/douardda/pyarcanist',
     install_requires=[
         'click',
         'phabricator',
@@ -28,5 +32,12 @@ setup(
     packages=find_packages('src'),
     entry_points={
         'console_scripts': [
-            'pyarc=pyarc.cli:pyarc']},
+            'pyarc=pyarcanist.cli:pyarc']},
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+        "Development Status :: 3 - Alpha",
+    ],
     )
