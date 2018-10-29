@@ -88,7 +88,10 @@ def diff(ctx, mine, all_repos, summary):
 
             click.echo('{key}: {value}'.format(
                 key=click.style('Author', fg='yellow'),
-                value=author['name']))
+                value=click.style(
+                    author['name'],
+                    fg='red' if author['name'] == user['userName'] else '')))
+
             n = datetime.now()
             click.echo('{key}: {value} ago'.format(
                 key=click.style('Created', fg='yellow'),
