@@ -5,5 +5,6 @@ from . import cli
 # cache config may occur in there
 from . import whoami
 from . import diff
+from . import harbormaster
 
 __all__ = (cli, whoami, diff, cache)
