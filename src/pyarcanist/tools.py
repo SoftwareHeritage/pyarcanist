@@ -1,8 +1,10 @@
 import os
 from . import cli
 
-
-ROWS, COLUMNS = map(int, os.popen('stty size', 'r').read().split())
+try:
+    ROWS, COLUMNS = map(int, os.popen('stty size', 'r').read().split())
+except ValueError:
+    ROWS, COLUMNS = 25, 80
 
 
 def wrap(msg, width=COLUMNS):
