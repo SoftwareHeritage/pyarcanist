@@ -7,7 +7,7 @@ import git
 
 from . import cli
 from .whoami import get_user
-from .tools import wrap, object_from_phid
+from .tools import wrap
 from . import cache
 
 

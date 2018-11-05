@@ -45,7 +45,7 @@ def validate(params, report_type):
     if isinstance(params, str):
         params = dict(x.strip().split('=', 1) for x in params.split(','))
     for k, mandatory, validator in validators[report_type]:
-        if mandatory and not k in params:
+        if mandatory and k not in params:
             raise ValueError(
                 'Parameter {} is mandatory for a {} report'.format(
                     k, report_type))

@@ -7,4 +7,4 @@ from . import whoami
 from . import diff
 from . import harbormaster
 
-__all__ = (cli, whoami, diff, cache)
+__all__ = (cli, whoami, diff, cache, harbormaster)

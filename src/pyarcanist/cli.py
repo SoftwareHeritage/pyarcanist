@@ -1,4 +1,3 @@
-import sys
 import click
 import hashlib
 
@@ -24,7 +23,6 @@ class options(dict):
 @click.option('-v', '--verbose/--no-verbose', default=False, envvar='VERBOSE')
 @click.option('-h', '--host', default=None, envvar='PHAB_CONDUIT_URL')
 @click.option('-t', '--token', default=None, envvar='PHAB_CONDUIT_TOKEN')
-
 @click.pass_context
 def pyarc(ctx, verbose, host, token):
     """Entry point"""
