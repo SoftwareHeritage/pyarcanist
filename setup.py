@@ -21,9 +21,9 @@ setup(
     description='Pure python cli for Phabricator',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    author='David Douard',
-    author_email='david.douard@sdfa3.org',
-    url='https://framagit.org/douardda/pyarcanist',
+    author='Software Heritage developers',
+    author_email='swh-devel@inria.fr',
+    url="https://forge.softwareheritage.org/source/pyarcanist/",
     install_requires=[
         'beaker',
         'click',
