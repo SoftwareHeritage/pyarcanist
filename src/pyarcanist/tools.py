@@ -1,9 +1,10 @@
-import os
+import subprocess as sp
 from . import cli
 
 try:
-    ROWS, COLUMNS = map(int, os.popen('stty size', 'r').read().split())
-except ValueError:
+    ROWS, COLUMNS = map(int, sp.check_output(
+        ['stty', 'size'], stderr=sp.DEVNULL).split())
+except sp.CalledProcessError:
     ROWS, COLUMNS = 25, 80
 
 
